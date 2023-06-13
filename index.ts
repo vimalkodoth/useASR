@@ -1,3 +1,3 @@
-import useASR from './src/useASR'
+import useASR from './src'
 
 export default useASR
