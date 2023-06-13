@@ -5,11 +5,11 @@
 ## Installation
 
 ```bash
-npm install use-asr
+npm install react-asr
 
 or
 
-yarn add use-asr
+yarn add react-asr
 ```
 
 ## Usage
