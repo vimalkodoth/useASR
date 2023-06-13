@@ -16,7 +16,7 @@ yarn add react-asr
 
 ```
 import React from 'react';
-import useAudioRecorder, { ConfigType } from 'react-asr';
+import useASR, { ConfigType } from 'react-asr';
 
 const config: ConfigType = {
   MIN_DECIBELS: -80,
@@ -31,7 +31,7 @@ const ExampleComponent = () => {
     recordedBlob,
     startRecording,
     stopRecording,
-  } = useAudioRecorder(config);
+  } = useASR(config)
 
   // ...rest of the component code
 };
