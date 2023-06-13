@@ -25,18 +25,60 @@ const config: ConfigType = {
   LOG_ENABLED: false,
 };
 
-const ExampleComponent = () => {
-  const {
-    isRecording,
-    recordedBlob,
-    startRecording,
-    stopRecording,
-  } = useASR(config)
+export default function MicWithAlertBox() {
+  const { isRecording, recordedBlob, startRecording, stopRecording } = useASR<ConfigType>(config);
 
-  // ...rest of the component code
-};
+  const { postASRMutation } = useContext(SearchContext);
 
-export default ExampleComponent;
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const onStartRecording = () => {
+    handleClickOpen();
+    startRecording();
+  };
+
+  useEffect(() => {
+    if (!isRecording) {
+      handleClose();
+    }
+  }, [isRecording]);
+
+  useEffect(() => {
+    if (!open) {
+      stopRecording();
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (recordedBlob) {
+      const formData = new FormData();
+      formData.append('file', recordedBlob, 'audio.wav');
+      postASRMutation?.mutate(formData);
+    }
+  }, [recordedBlob]);
+
+  return (
+    <>
+      <ImageIcon
+        src="/mic.svg"
+        className="ltr:mr-10 rtl:ml-10 cursor-pointer"
+        onClick={onStartRecording}
+      />
+      <AlertDialogSlide open={open} onClose={handleClose} />
+    </>
+  );
+}
+
+
+export default MicWithAlertBox;
 ```
 
 ## Configuration Options
