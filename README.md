@@ -2,6 +2,11 @@
 
 `useASR` is a custom React hook for Automatic Speech Recognition (ASR) that provides functionality to record audio using the Web Audio API.
 
+
+## Use Cases
+- detect human voice and sent it for speech-to-text processing.
+- AI Prompt Engineering where user could have a better UX to input text using human voice.
+
 ## Installation
 
 ```bash
