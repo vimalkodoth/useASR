@@ -20,6 +20,13 @@
     "index.d.ts",
     "README.md"
   ],
+  "keywords": [
+    "react",
+    "typescript",
+    "prompt ui",
+    "prompt engineering",
+    "chatgpt"
+  ],
   "author": "Vimal Madhavan",
   "license": "MIT",
   "dependencies": {
